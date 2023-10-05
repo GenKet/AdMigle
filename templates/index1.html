@@ -22,7 +22,7 @@
                     Зарегестрироваться
                 </button>
 
-                <button type="button">
+                <button type="button" id="login-button">
                     Войти
                 </button>
                 
@@ -31,5 +31,10 @@
         </div>
       </div>
     </header>
+  <script>
+        document.getElementById("login-button").addEventListener("click", function() {
+            window.location.href = "{% url 'login_view' %}";
+        });
+    </script>
   </body>
 </html>
