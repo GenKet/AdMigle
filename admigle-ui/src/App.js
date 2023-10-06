@@ -1,12 +1,14 @@
 
 import React from 'react';
 import './App.css';
+import MainComponent from './components/MainComponent';
+
 
 function App() {
   return (
-    <React.Fragment>
-      <h1>Hello word!</h1>
-    </React.Fragment>
+    <>
+      <MainComponent/>
+    </>
   );
 }
 
