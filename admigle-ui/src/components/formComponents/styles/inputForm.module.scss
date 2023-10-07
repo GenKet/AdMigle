@@ -4,6 +4,7 @@ $back_img: url("../../../images/input_form_back.png");
   --back_color: #111827;
   --text_color: #fff;
   --form_back: #030712;
+  --hover_item_menu: #191f33;
   --border_radius: 1vw;
   --placeholder_color: #ffffff80;
   --btn_back: #2563eb;
@@ -28,7 +29,7 @@ input {
     color: var(--text_color);
     h2 {
       margin: 0;
-      padding: 100px 0;
+      padding: 40px 0;
     }
   }
 
@@ -75,7 +76,6 @@ input {
     }
 
     .google_input {
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -83,9 +83,36 @@ input {
       margin-top: 3vh;
       opacity: 0.6;
     }
-    
-    .google_input:hover{
-        opacity: 1;
+
+    .google_input:hover {
+      opacity: 1;
+    }
+  }
+
+  .form_menu {
+    display: flex;
+    align-items: center;  
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+    left: -7vw;
+    top: 15px;
+
+
+    a{
+      text-decoration: none;
+    .menu_item {
+      color: var(--text_color);
+      cursor: pointer;
+      background-color: var(--form_back);
+      border-top-left-radius: var(--border_radius);
+      border-top-right-radius: var(--border_radius);  
+      padding: 8px;
+    }
+  }
+
+    .menu_item:hover{
+      background-color: var(--hover_item_menu);
     }
   }
 }

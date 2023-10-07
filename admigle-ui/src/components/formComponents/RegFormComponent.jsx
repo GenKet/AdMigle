@@ -22,7 +22,6 @@ export default function InputFormComponent() {
   };
 
   return (
-
     <div className={style.wrapper}>
       <div className={style.title_page}>
         <h2>Welcome to AdMigle!</h2>
@@ -50,12 +49,12 @@ export default function InputFormComponent() {
         </label>
 
         <button type="submit" className={style.sing_in_btn}>
-          Sing In
+          Register
         </button>
 
         <div className={style.google_input}>
           <GoogleButton
-            style={{ width: "17vw" }}
+            style={{ width: "17vw"}}
             onClick={google_inlut}
           ></GoogleButton>
         </div>
