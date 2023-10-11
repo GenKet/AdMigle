@@ -1,65 +1,58 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import style from "./styles/inputForm.module.scss";
-import GoogleButton from "react-google-button";
-import classnames from "classnames";
-import { Link } from "react-router-dom";
+import GoogleButton from 'react-google-button'
 
 export default function InputFormComponent() {
-  const {
-    // register,
-    handleSubmit,
-    // watch,
-    formState: { errors },
-  } = useForm();
-
   const onSubmit = (data) => {
     console.log(data);
   };
 
-  const google_inlut = (e) => {
-    console.log(e.target);
-  };
-
   return (
-
     <div className={style.wrapper}>
-      <div className={style.title_page}>
-        <h2>Welcome to AdMigle!</h2>
-      </div>
 
-      <div className={style.form_menu}>
-        <Link to="/">
-          <div className={classnames(style.menu_item)}>Sing In</div>
-        </Link>
-
-        <Link to="/reg_form">
-          <div className={classnames(style.menu_item)}>Sing Up</div>
-        </Link>
-      </div>
-
-      <form className={style.form}>
-        <label>
-          Email Address
-          <input placeholder="testemail@gmail.com" />
-        </label>
-
-        <label>
-          Your password
-          <input placeholder="***************" />
-        </label>
-
-        <button type="submit" className={style.sing_in_btn}>
-          Sing In
-        </button>
-
-        <div className={style.google_input}>
-          <GoogleButton
-            style={{ width: "17vw" }}
-            onClick={google_inlut}
-          ></GoogleButton>
+      <form className={style.input_form}>
+        <div className={style.title_form}>
+          Sing in to account
+          <p className={style.sub__title_form}>
+            Enter your email & password to login
+          </p>
         </div>
+        <div className={style.inputs_info}>
+          <>
+            <label for="email_input"> Email Addres</label>
+            <input
+              type="text"
+              placeholder="test@gmail.com"
+              id="email_input"
+            ></input>
+          </>
+
+          <>
+            <label for="password_input">Password</label>
+            <div className={style.show_pass}>show</div>
+            <input
+              type="text"
+              placeholder="test@gmail.com"
+              id="password_input"
+            ></input>
+          </>
+        </div>
+        <div className={style.forgot_pass_block}>
+          <p>Forgot your password?</p>
+        </div>
+
+        <div className={style.sing_btn}>
+          <input type="submit" value="Sing In"/>
+        </div>
+
+        <div className={style.diff_method_login}>
+        <p>Or Sing In with</p>
+       <GoogleButton style={{width:'340px'}}/>
+      </div>
+      <p className={style.create_account}>Don't have account?<span>Create Account</span></p>
       </form>
+
+    
     </div>
   );
 }

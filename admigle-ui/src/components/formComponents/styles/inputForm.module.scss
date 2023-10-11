@@ -1,118 +1,112 @@
-$back_img: url("../../../images/input_form_back.png");
-
-:root {
-  --back_color: #111827;
-  --text_color: #fff;
-  --form_back: #030712;
-  --hover_item_menu: #191f33;
-  --border_radius: 1vw;
-  --placeholder_color: #ffffff80;
-  --btn_back: #2563eb;
-}
-
-body,
-html,
-form,
-input {
-  margin: 0;
-  padding: 0;
-}
-
 .wrapper {
-  background-color: var(--back_color);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 100vh;
-  width: 100vw;
+  background: #eff2ff;
 
-  .title_page {
-    display: block;
-    text-align: center;
-    color: var(--text_color);
-    h2 {
-      margin: 0;
-      padding: 40px 0;
-    }
-  }
+  .input_form {
+    position: absolute;
+    background-color: #f7fbff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 2px 2px 5px rgba($color: #000, $alpha: 0.2);
 
-  .form {
-    border-radius: var(--border_radius);
-    background-color: var(--form_back);
-    max-width: 20vw;
-    margin: 0 auto;
-    padding: 1.5vw;
-    label {
-      display: block;
-      width: 18vw;
-      margin: 3vh 1.5vw;
-      color: var(--text_color);
-      input {
-        margin: 1vh 0;
-        display: block;
-        height: 7vh;
-        width: 16vw;
-        border: 1px solid var(--text_color);
-        background: none;
-        border-radius: calc(var(--border_radius) / 2);
-        color: var(--text_color);
-        font-size: 16px;
-        padding: 0.7vh;
-      }
-
-      input::placeholder {
-        color: var(--placeholder_color);
-      }
-    }
-
-    .sing_in_btn {
-      height: 7vh;
-      width: 17vw;
-      margin: 1vh 1.5vw;
-      border-radius: calc(var(--border_radius) / 2);
-      background: var(--btn_back);
+    .title_form {
+      text-align: left;
+      font-size: 24px;
       font-weight: bold;
-      font-size: 16px;
-      color: var(--text_color);
-      border: none;
+      .sub__title_form {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #868686;
+      }
+    }
+
+    .inputs_info {
+      margin-top: 20px;
+
+      label,
+      input {
+        display: block;
+      }
+
+      label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #616161;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 320px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: #ececff;
+        border: 1px solid #d5dcff;
+        padding: 5px 10px;
+        margin-bottom: 30px;
+      }
+
+      input:last-child {
+        margin-bottom: 0;
+      }
+
+      .show_pass {
+        cursor: pointer;
+        position: absolute;
+        right: 25px;
+        top: 203px;
+        font-size: 16px;
+        font-weight: lighter;
+        color: #7266fd;
+      }
+    }
+
+    .forgot_pass_block {
+      color: #7266fd;
+      text-align: right;
       cursor: pointer;
+      p {
+        margin: 0;
+      }
+      p:hover {
+        color: #616161;
+      }
     }
 
-    .google_input {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-top: 3vh;
-      opacity: 0.6;
+    .sing_btn {
+      margin-top: 20px;
+      input {
+        width: 340px;
+        height: 40px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 1px solid #d5dcff;
+        font-weight: bold;
+        color: #fff;
+        background: #7266fd;
+        cursor: pointer;
+      }
     }
 
-    .google_input:hover {
-      opacity: 1;
+    .diff_method_login {
+      p {
+        font-size: 14px;
+        color: #616161;
+      }
     }
-  }
 
-  .form_menu {
-    display: flex;
-    align-items: center;  
-    width: fit-content;
-    margin: 0 auto;
-    position: relative;
-    left: -7vw;
-    top: 15px;
-
-
-    a{
-      text-decoration: none;
-    .menu_item {
-      color: var(--text_color);
-      cursor: pointer;
-      background-color: var(--form_back);
-      border-top-left-radius: var(--border_radius);
-      border-top-right-radius: var(--border_radius);  
-      padding: 8px;
-    }
-  }
-
-    .menu_item:hover{
-      background-color: var(--hover_item_menu);
+    .create_account {
+      color: #616161;
+      font-size: 14px;
+      text-align: center;
+      span {
+        color: #7266fd;
+        cursor: pointer;
+      }
     }
   }
 }
