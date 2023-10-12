@@ -1,3 +1,25 @@
+.show{
+  text-decoration: underline;
+}
+
+.back_login{
+  position: absolute;
+  top: 0;
+  left: 0;
+  button{
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7266fd;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  button:hover{
+    text-decoration: underline;
+  }
+}
+
 .wrapper {
   position: absolute;
   display: flex;
@@ -27,6 +49,15 @@
 
     .inputs_info {
       margin-top: 20px;
+
+
+      .error_mess{
+        color: red;
+       position: relative;
+       top: -20px;
+        font-size: 12px;
+        margin: 0;
+      }
 
       label,
       input {
@@ -106,6 +137,10 @@
       span {
         color: #7266fd;
         cursor: pointer;
+        a{
+          text-decoration: none;
+          color: inherit;
+        }
       }
     }
   }

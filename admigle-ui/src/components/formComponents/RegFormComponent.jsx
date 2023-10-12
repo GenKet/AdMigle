@@ -4,15 +4,12 @@ import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export default function InputFormComponent() {
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+export default function RegFormComponent() {
 
   const states = {
-    text: "text",
-    pass: "password",
-  };
+    text: 'text', 
+    pass:'password'
+  }
 
   const {
     register,
@@ -21,38 +18,44 @@ export default function InputFormComponent() {
     formState: { errors },
   } = useForm();
 
+
   const [type, setType] = useState(states.pass);
 
-  const show_pass = (e) => {
-    e.target.classList.toggle(style.show);
-    if (type === states.text) {
+  const show_pass = (e)=>{
+    e.target.classList.toggle(style.show)
+    if(type === states.text){
       setType(states.pass);
-    } else {
+    }
+    else{
       setType(states.text);
     }
-  };
+  }
 
-  const pass_input = (type) => {
-    return (
-      <input
-        type={type}
-        placeholder="************"
-        id="password_input"
-        {...register("password", { required: true })}
-      />
-    );
-  };
+  const pass_input = (type) =>{
+    return(  <input
+      type={type}
+      placeholder="************"
+      id="password_input"
+      {...register("password", {required:true})}
+    />)
+  }
 
   return (
     <div className={style.wrapper}>
-      <form className={style.input_form} onSubmit={handleSubmit(data=>{
-        console.log(data)
-      })}>
+      <div className={style.back_login}>
+        <Link to='/'>
+        <button type="button">Back to Login</button>
+        </Link>
+      </div>
+      <form
+        className={style.input_form}
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+        })}
+      >
         <div className={style.title_form}>
-          Sing in to account
-          <p className={style.sub__title_form}>
-            Enter your email & password to login
-          </p>
+          Create your account
+          <p className={style.sub__title_form}>Enter your email & password</p>
         </div>
         <div className={style.inputs_info}>
           <>
@@ -74,33 +77,20 @@ export default function InputFormComponent() {
 
           <>
             <label htmlFor="password_input">Password</label>
-            <div className={style.show_pass} onClick={show_pass}>
-              show
-            </div>
-            {pass_input(type)}
-            {errors.password && (
-              <p className={style.error_mess}>Empty password input!</p>
-            )}
+            <div className={style.show_pass} onClick={show_pass}>show</div>
+          {pass_input(type)}
+          {errors.password && ( <p className={style.error_mess}>Empty password input!</p>)}
           </>
-        </div>
-        <div className={style.forgot_pass_block}>
-          <p>Forgot your password?</p>
         </div>
 
         <div className={style.sing_btn}>
-          <input type="submit" value="Sing In" />
+          <input type="submit" value="Create Account" />
         </div>
 
         <div className={style.diff_method_login}>
-          <p>Or Sing In with</p>
-          <GoogleButton style={{ width: "340px" }} />
+          <p>Or Creat account with</p>
+          <GoogleButton style={{ width: "340px" }} value="reg" />
         </div>
-        <p className={style.create_account}>
-          Don't have account?
-          <span>
-            <Link to="/regform ">Create Account</Link>
-          </span>
-        </p>
       </form>
     </div>
   );
