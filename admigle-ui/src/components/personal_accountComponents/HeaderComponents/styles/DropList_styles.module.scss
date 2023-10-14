@@ -1,0 +1,32 @@
+.wrapper_list{
+    position: absolute;
+    display: none;
+    .list{
+        position: relative;
+        top: 60px;
+        left: -220px;
+
+        .item_list{
+            cursor: pointer;
+            display: block;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 20px 0;
+            background: #fff;
+            img{
+                width: 25px;
+                height: 15px;
+            }
+            .title_lang{
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.open_list{
+    display: block;
+}

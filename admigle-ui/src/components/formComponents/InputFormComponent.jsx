@@ -45,9 +45,12 @@ export default function InputFormComponent() {
 
   return (
     <div className={style.wrapper}>
-      <form className={style.input_form} onSubmit={handleSubmit(data=>{
-        console.log(data)
-      })}>
+      <form
+        className={style.input_form}
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+        })}
+      >
         <div className={style.title_form}>
           Sing in to account
           <p className={style.sub__title_form}>
@@ -88,7 +91,9 @@ export default function InputFormComponent() {
         </div>
 
         <div className={style.sing_btn}>
-          <input type="submit" value="Sing In" />
+          <Link to="/persoanl_account">
+            <input type="submit" value="Sing In" />
+          </Link>
         </div>
 
         <div className={style.diff_method_login}>

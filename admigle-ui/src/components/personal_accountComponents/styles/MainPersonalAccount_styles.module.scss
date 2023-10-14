@@ -1,0 +1,50 @@
+.wrapper_account {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .side_bar_wrapper {
+    background: #fff;
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 250px;
+    height: 100vh;
+    box-shadow: var(--box_shadow);
+    transition:  transform 0.5s;
+
+    .header_side_bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 24px;
+        font-weight: bold;
+
+      .logo {
+        width: fit-content;
+        text-align: center;
+      }
+
+      .arrow_close_side_bar{
+        scale: 1.5;
+        color: #7266FD;
+        cursor: pointer;
+        transform: rotate(180deg);
+        transition:  transform 0.5s;
+      }
+
+      .rotate_arrow{
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .close_state_side_bar{
+    transform:translateX(-240px);
+  }
+
+}
+
+

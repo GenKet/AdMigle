@@ -1,0 +1,64 @@
+:root{
+    --back:#fff;
+    --box_shadow: 0px 4px 40px rgba(39, 32, 120, 0.1);
+}
+
+.wrapper_header{
+    position: sticky;
+    width: 97%;
+    background: var(--back);
+    box-shadow: var(--box_shadow) ;
+    padding: 10px 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 10;
+
+
+    .lang_block{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-right: 10px;
+        img{
+            width: 25px;
+            height: 15px;
+        }
+        .title_lang{
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+    }
+
+    .account{
+        margin-right: 50px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .image_account{
+            width: 35px;
+            height: 35px;
+            background: #8e8e8e;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .account_name{
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+
+}
+
+

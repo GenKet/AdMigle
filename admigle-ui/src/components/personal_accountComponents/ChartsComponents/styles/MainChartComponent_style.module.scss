@@ -1,0 +1,11 @@
+.wrapper_charts{
+    position: absolute;
+    top: 70px;
+    left: 300px;
+    border: 1px solid black;
+    width:80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
