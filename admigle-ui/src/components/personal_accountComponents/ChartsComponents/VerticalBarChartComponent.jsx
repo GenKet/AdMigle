@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
+import styles from './styles/MainChartComponent_style.module.scss'
 
 ChartJS.register(
   CategoryScale,
@@ -53,8 +54,8 @@ export const data = {
 
 export default function VerticalBarChartComponent() {
   return (
-    <div style={{width:'60%', height:'300px'}}>
-      <Bar options={options} data={data} />
+    <div className={styles.chart} style={{width:'50%'}}>
+      <Bar options={options} data={data}  style={{height:'100%', width:'100%'}} />
     </div>
   );
 }

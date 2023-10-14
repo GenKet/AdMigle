@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
+import styles from './styles/MainChartComponent_style.module.scss'
 
 ChartJS.register(
   CategoryScale,
@@ -54,8 +55,8 @@ export const data = {
 
 export default function AreaChartComponent() {
   return (
-    <div style={{width:'40%', height:'300px', scale:'1'}}>
-      <Line options={options} data={data} />
+    <div className={styles.chart} style={{width:'40%'}}>
+      <Line options={options} data={data}   style={{height:'100%', width:'100%'}}/>
     </div>
   );
 }

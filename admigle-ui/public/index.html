@@ -12,7 +12,37 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
     <title>AdMigle</title>
+    <script defer type="text/javascript">
+      const resizableDivs = document.querySelectorAll('.resizable');
 
+resizableDivs.forEach((resizableDiv) => {
+  let isResizing = false;
+  let initialX;
+  let initialWidth;
+
+  resizableDiv.addEventListener('mousedown', function(e) {
+    isResizing = true;
+    initialX = e.pageX;
+    initialWidth = parseFloat(getComputedStyle(resizableDiv).width);
+
+    document.addEventListener('mousemove', resize);
+    document.addEventListener('mouseup', stopResize);
+  });
+
+  function resize(e) {
+    if (isResizing) {
+      const newWidth = initialWidth + (e.clientX - initialX);
+      resizableDiv.style.width = newWidth + 'px';
+    }
+  }
+
+  function stopResize() {
+    isResizing = false;
+    document.removeEventListener('mousemove', resize);
+  }
+});
+
+    </script>
   </head>
   <body>
 
