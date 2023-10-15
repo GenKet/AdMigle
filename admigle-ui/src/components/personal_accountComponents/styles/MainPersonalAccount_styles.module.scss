@@ -39,6 +39,30 @@
         transform: rotate(360deg);
       }
     }
+
+    .wrapper_side_ber_menu{
+      margin-top: 20px;
+
+      .list_menu{
+        padding: 0px;
+        list-style-type: none;
+
+        li{
+          padding: 10px 0;
+          color: #000;
+          font-weight: bold;
+          font-size: 18px;cursor: pointer;
+          a{
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+
+        li:hover{
+          color: #909090;
+        }
+      }
+    }
   }
 
   .close_state_side_bar{
