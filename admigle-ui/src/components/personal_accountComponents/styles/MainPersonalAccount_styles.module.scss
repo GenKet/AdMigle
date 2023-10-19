@@ -13,7 +13,7 @@
     width: 250px;
     height: 110vh;
     box-shadow: var(--box_shadow);
-    transition:  transform 0.5s;
+    transition:  transform 1s;
 
     .header_side_bar {
         display: flex;
@@ -56,6 +56,9 @@
             color: inherit;
             text-decoration: none;
           }
+
+     
+
         }
 
         li:hover{
@@ -65,10 +68,18 @@
     }
   }
 
+  .side_bar_wrapper:hover{
+    transform: translate(0px);
+  }
+  
+
   .close_state_side_bar{
     transform:translateX(-240px);
   }
 
+ 
+
 }
+
 
 

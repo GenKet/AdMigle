@@ -1,18 +1,28 @@
 import React from "react";
 import styles from "./styles/MainPersonalAccount_styles.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function SideBarMenuComponent() {
-    const location =  useLocation();
+
   return (
     <div className={styles.wrapper_side_ber_menu}>
       <ul className={styles.list_menu}>
         <li>
-          <Link to ="general_tab">General</Link>
+          <NavLink
+            to="/personal_account"
+          >
+            General
+          </NavLink>
         </li>
         <li>
-            <Link to="api's_tab">API's</Link>
+          <NavLink
+
+            to="api's_tab"
+          >
+            API's
+          </NavLink>
         </li>
+        <input type="file"/>
       </ul>
     </div>
   );

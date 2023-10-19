@@ -22,29 +22,50 @@
     overflow: auto;
   }
 
-  .item_apis {
-    padding: 15px 25px;
-    border-radius: 5px;
-    border: 1px solid #3d568c;
-    background: #111827;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-    cursor: pointer;
-    h2,
-    p {
-      margin: 0;
-    }
-    img {
-      width: 35px;
-      height: 35px;
-    }
-    h2 {
-      font-size: 18px;
-    }
-    p {
-      font-size: 14px;
+  a {
+    text-decoration: none;
+    .item_apis {
+      padding: 15px 25px;
+      border-radius: 5px;
+      border: 1px solid #3d568c;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      width: 170px;
+      cursor: pointer;
+      h2,
+      p {
+        margin: 0;
+      }
+      img {
+        width: 35px;
+        height: 35px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 14px;
+      }
     }
   }
+
+
+  .title_page{
+    font-weight: bold;
+    position: absolute;
+    font-size: 24px;
+    margin-left: 10px;
+    color: #3d568c;
+  }
+
+
 }
+
+.wrapper_component_charts{
+position: relative;
+top: -50px;
+}
+

@@ -3,6 +3,7 @@ import style from "./styles/inputForm.module.scss";
 import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import PreloaderComponent from "../loaderComponents/PreloaderComponent";
 
 export default function InputFormComponent() {
   const onSubmit = (data) => {
@@ -43,12 +44,26 @@ export default function InputFormComponent() {
     );
   };
 
+  const [loader, setLoaderState] = useState(false);
+
+  const btn_click = () =>{
+    setLoaderState(true);
+
+setTimeout(() => {
+  window.location.href = "/personal_account";
+}, 5000);
+  }
+
   return (
-    <div className={style.wrapper}>
+  
+    <>{
+
+      loader ? (<PreloaderComponent/>):(
+        <div className={style.wrapper}>
       <form
         className={style.input_form}
         onSubmit={handleSubmit((data) => {
-          console.log(data);
+   
         })}
       >
         <div className={style.title_form}>
@@ -91,8 +106,8 @@ export default function InputFormComponent() {
         </div>
 
         <div className={style.sing_btn}>
-          <Link to="/persoanl_account">
-            <input type="submit" value="Sing In" />
+          <Link to='' onClick={btn_click}>
+            <input type="submit" value="Sing In"/>
           </Link>
         </div>
 
@@ -108,5 +123,10 @@ export default function InputFormComponent() {
         </p>
       </form>
     </div>
+      )
+    }
+    
+    </>
+
   );
 }
