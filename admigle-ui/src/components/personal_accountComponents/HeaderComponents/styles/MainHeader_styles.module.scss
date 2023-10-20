@@ -34,6 +34,7 @@
     }
 
     .account{
+        cursor: pointer;
         margin-right: 50px;
         display: flex;
         align-items: center;
@@ -50,12 +51,29 @@
             text-align: center;
             font-size: 10px;
             font-weight: bold;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .account_name{
             align-self: flex-start;
             font-size: 12px;
             font-weight: bold;
+        }
+
+        .wrapper_account_edit{
+            display: none;
+            width: 225px;
+            background: #fff;
+            position: absolute;
+            right:0;
+            top: 70px;
+            box-shadow: var(--box_shadow);
+            padding: 10px;
+        }
+
+        .visib{
+            display: block;
         }
     }
 

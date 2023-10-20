@@ -22,7 +22,6 @@ export default function SideBarMenuComponent() {
             API's
           </NavLink>
         </li>
-        <input type="file"/>
       </ul>
     </div>
   );
