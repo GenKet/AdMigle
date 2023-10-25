@@ -7,6 +7,7 @@ import MainPersonalAccountComponent from "./personal_accountComponents/MainPerso
 import APisMainComponent from "./personal_accountComponents/APisMainComponent";
 import ChartApisComponent from "./personal_accountComponents/ChartsComponents/ChartApisComponent";
 import MainChartsComponent from "./personal_accountComponents/ChartsComponents/MainChartsComponent";
+import UsersMainComponent from "./personal_accountComponents/UsersMainComponent";
 
 
 
@@ -26,6 +27,8 @@ function MainComponent() {
             <Route path="api's_tab" element={<APisMainComponent />} />
 
             <Route path="api's_charts/:key" element={<ChartApisComponent />} />
+
+            <Route path="user's" element = {<UsersMainComponent/>}></Route>
 
         </Route>
        

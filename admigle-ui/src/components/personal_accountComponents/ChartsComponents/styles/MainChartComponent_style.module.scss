@@ -1,7 +1,5 @@
 .wrapper_charts {
-  position: absolute;
-  top: 70px;
-  left: 300px;
+  float: right;
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -17,9 +15,29 @@
     margin: 10px;
   }
 
-  .resizable {
-    resize: both;
-    overflow: auto;
+  .wrapper_add_users_btn {
+    padding: 30px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    button {
+      background: blue;
+      color: #fff;
+      padding: 10px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .wrapper_users {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 60px;
+    width: 85%;
   }
 
   a {
@@ -52,20 +70,16 @@
     }
   }
 
-
-  .title_page{
+  .title_page {
     font-weight: bold;
     position: absolute;
     font-size: 24px;
     margin-left: 10px;
     color: #3d568c;
   }
-
-
 }
 
-.wrapper_component_charts{
-position: relative;
-top: -50px;
+.wrapper_component_charts {
+  position: relative;
+  top: -50px;
 }
-

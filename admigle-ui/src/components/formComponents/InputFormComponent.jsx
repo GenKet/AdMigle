@@ -18,7 +18,6 @@ export default function InputFormComponent() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
