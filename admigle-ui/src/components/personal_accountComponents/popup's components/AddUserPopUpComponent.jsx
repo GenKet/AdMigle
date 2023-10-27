@@ -11,14 +11,14 @@ export default function AddUserPopUpComponent({ visib, state_fun }) {
     control,
     handleSubmit,
     formState: { errors },
-    reset, // Добавляем функцию reset
+    reset, 
   } = useForm();
 
   const onSubmit = (data) => {
     const key = generateRandomKey(32);
-    add_user_db(create_user(data.client_name, data.client_currency, key));
+    add_user_db(create_user(data.client_name, data.client_currency, key, data.client_website));
 
-    // Сбрасываем значения полей
+    
     reset();
     
     state_fun(!visib);
@@ -26,6 +26,9 @@ export default function AddUserPopUpComponent({ visib, state_fun }) {
 
   return (
     <div className={classnames(styles.wrapper_popup, { [styles.visib]: visib })}>
+      <div className={styles.close_cross} onClick={()=>{
+        state_fun(!visib);
+      }}>&#10006;</div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form_create_user}>
         <h3>Client details</h3>
         <div className={styles._line}>

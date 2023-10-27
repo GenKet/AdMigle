@@ -1,3 +1,14 @@
+@mixin button {
+  background: blue;
+  color: #fff;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .wrapper_charts {
   float: right;
   width: 80%;
@@ -6,6 +17,38 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
+
+  .list_project {
+    width: 100%;
+    table {
+    width: 92%;
+      margin-top: 30px;
+      padding:  0 100px 0 50px;
+      border-collapse: collapse;
+      border-top-right-radius: 10px;
+      border-top-left-radius:10px;
+      overflow: hidden;
+      thead{
+        box-shadow: 5px 4px 40px rgba(39, 32, 120, 0.1);
+        th{
+          padding: 20px;
+          text-align: start;
+        }
+      }
+
+      tbody{
+        tr{
+          td{
+            padding:  20px; 
+            border-bottom: 1px solid black;
+            p{
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .chart {
     height: 300px;
@@ -21,14 +64,7 @@
     right: 0;
     top: 60px;
     button {
-      background: blue;
-      color: #fff;
-      padding: 10px 25px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+      @include button;
     }
   }
 
@@ -43,19 +79,19 @@
   a {
     text-decoration: none;
     .item_apis {
-      padding: 15px 25px;
+      padding: 15px 20px;
       border-radius: 5px;
-      border: 1px solid #3d568c;
-      background: #111827;
+      border: 2px solid #3d568c;
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #fff;
-      width: 170px;
+      color: #21304e;
+      width: 180px;
       cursor: pointer;
       h2,
       p {
         margin: 0;
+        white-space: nowrap;         
       }
       img {
         width: 35px;
@@ -68,6 +104,17 @@
         font-size: 14px;
       }
     }
+
+    .item_apis:last-child {
+      margin-right: 20px;
+      scale: 1.01;
+    }
+    transition: all 1s;
+  }
+
+  a:hover {
+    transform: translateY(-5px);
+    scale: 1;
   }
 
   .title_page {
@@ -77,9 +124,30 @@
     margin-left: 10px;
     color: #3d568c;
   }
+
+  .top_header_part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 100px 0 20px;
+
+    .add_project_btn {
+      button {
+        @include button;
+      }
+    }
+
+    .user {
+      font-weight: bold;
+      font-size: 24px;
+    }
+  }
 }
 
 .wrapper_component_charts {
   position: relative;
   top: -50px;
+  row-gap: 20px;
 }

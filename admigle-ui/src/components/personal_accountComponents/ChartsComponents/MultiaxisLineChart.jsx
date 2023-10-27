@@ -28,7 +28,7 @@ export const options = {
   responsive: true,
   interaction: {
     mode: "index",
-    intersect: false,
+    intersect: true,
   },
   stacked: false,
   plugins: {
@@ -48,11 +48,17 @@ export const options = {
       display: true,
       position: "right",
       grid: {
-        drawOnChartArea: false,
+        drawOnChartArea: true,
       },
     },
   },
+  elements: {
+    line: {
+      borderJoinStyle: "round", 
+    },
+  },
 };
+
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
@@ -63,7 +69,7 @@ export const data = {
       label: "Dataset 1",
       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      backgroundColor: "rgba(255, 0, 132, 1)",
       yAxisID: "y",
     },
     {
@@ -83,3 +89,5 @@ export default function MultiaxisLineChart() {
     </div>
   );
 }
+
+

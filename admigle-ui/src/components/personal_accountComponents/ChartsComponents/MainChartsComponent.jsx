@@ -4,6 +4,7 @@ import VerticalBarChartComponent from './VerticalBarChartComponent';
 import AreaChartComponent from './AreaChartComponent';
 import PieChartComponent from './PieChartComponent';
 import MultiaxisLineChart from './MultiaxisLineChart';
+import ApexChart from './ApexChartComponent';
 
 export default function MainChartsComponent() {
   return (
@@ -12,6 +13,7 @@ export default function MainChartsComponent() {
        <AreaChartComponent />   
        <PieChartComponent />
        <MultiaxisLineChart />
+       <ApexChart/>
     </div>
   )
 }

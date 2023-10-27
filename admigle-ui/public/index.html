@@ -10,43 +10,50 @@
       content="Web site created using create-react-app"
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+      html{
+        font-family:'Rubik', sans-serif;
+      }
+    </style>
+
     <title>AdMigle</title>
     <script defer type="text/javascript">
-      const resizableDivs = document.querySelectorAll('.resizable');
+      const resizableDivs = document.querySelectorAll(".resizable");
 
-resizableDivs.forEach((resizableDiv) => {
-  let isResizing = false;
-  let initialX;
-  let initialWidth;
+      resizableDivs.forEach((resizableDiv) => {
+        let isResizing = false;
+        let initialX;
+        let initialWidth;
 
-  resizableDiv.addEventListener('mousedown', function(e) {
-    isResizing = true;
-    initialX = e.pageX;
-    initialWidth = parseFloat(getComputedStyle(resizableDiv).width);
+        resizableDiv.addEventListener("mousedown", function (e) {
+          isResizing = true;
+          initialX = e.pageX;
+          initialWidth = parseFloat(getComputedStyle(resizableDiv).width);
 
-    document.addEventListener('mousemove', resize);
-    document.addEventListener('mouseup', stopResize);
-  });
+          document.addEventListener("mousemove", resize);
+          document.addEventListener("mouseup", stopResize);
+        });
 
-  function resize(e) {
-    if (isResizing) {
-      const newWidth = initialWidth + (e.clientX - initialX);
-      resizableDiv.style.width = newWidth + 'px';
-    }
-  }
+        function resize(e) {
+          if (isResizing) {
+            const newWidth = initialWidth + (e.clientX - initialX);
+            resizableDiv.style.width = newWidth + "px";
+          }
+        }
 
-  function stopResize() {
-    isResizing = false;
-    document.removeEventListener('mousemove', resize);
-  }
-});
-
+        function stopResize() {
+          isResizing = false;
+          document.removeEventListener("mousemove", resize);
+        }
+      });
     </script>
   </head>
   <body>
-
     <div id="root"></div>
-  
   </body>
 </html>

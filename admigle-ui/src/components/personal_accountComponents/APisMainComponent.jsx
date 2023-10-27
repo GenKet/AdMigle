@@ -7,10 +7,13 @@ import classNames from 'classnames'
 
 export default function APisMainComponent () {
 
+  const combinedClassNames = classNames(style.wrapper_charts, wrapper.wrapper_component);
+
   return (
-    <div className={classNames(style.wrapper_charts, wrapper.wrapper_component)}>
+    <div className={combinedClassNames}>
       {apis.map((item, index) => {
         return (
+
           <Link to ={ `../api's_charts/${item.title}`} key={index}>
             <div
               className={style.item_apis}
@@ -22,6 +25,7 @@ export default function APisMainComponent () {
               </div>
             </div>
           </Link>
+          
         );
       })}
     </div>

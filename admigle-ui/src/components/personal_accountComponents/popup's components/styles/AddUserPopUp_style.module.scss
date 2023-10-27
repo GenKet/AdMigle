@@ -11,6 +11,15 @@
   overflow-y: hidden;
   align-items: center;
   justify-content: center;
+
+  .close_cross{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    scale: 2;
+    cursor: pointer;
+  }
 }
 
 .visib {
