@@ -14,12 +14,35 @@ export default function RegFormComponent() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
 
   const [type, setType] = useState(states.pass);
+
+
+  const handleFormSubmit = async (data, e) => {
+    e.preventDefault();
+    console.log(data)
+    try {
+      const response = await fetch('http://localhost:5000/api/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), 
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Успешный ответ от сервера:', responseData);
+      } else {
+        console.error('Ошибка сервера:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Ошибка при выполнении запроса:', error);
+    }
+  };
 
   const show_pass = (e)=>{
     e.target.classList.toggle(style.show)
@@ -49,9 +72,7 @@ export default function RegFormComponent() {
       </div>
       <form
         className={style.input_form}
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
+        onSubmit={handleSubmit(handleFormSubmit)}
       >
         <div className={style.title_form}>
           Create your account
