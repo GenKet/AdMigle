@@ -29,13 +29,23 @@ export default function AddProjectsPopUpComponents(props) {
 
 const project = create_project( data.client_name, data.client_website, new Date().toLocaleDateString('ru-RU', { weekday: 'long',year: '2-digit', month: '2-digit', day: '2-digit' }), data.client_currency);
 
+const add_project_db = (project_key, project, user_key )=>{
+
+  return {
+    'project_key':project_key,
+    'project':project,
+    'user_key':user_key
+  }
+}
+
+
       const response = await fetch("http://localhost:5000/api/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
 
-        body: JSON.stringify(project),
+        body: JSON.stringify(add_project_db(key_project, project, user_key)),
       });
 
       if (response.status == 200) {
