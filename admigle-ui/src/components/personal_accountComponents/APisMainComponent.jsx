@@ -9,12 +9,18 @@ export default function APisMainComponent () {
 
   const combinedClassNames = classNames(style.wrapper_charts, wrapper.wrapper_component);
 
+  const google_adw = (index) =>{
+   if(index  === 'Google Adw'){
+    window.location.href = 'http://localhost:8000/adwords/';
+   }
+  }
+
   return (
     <div className={combinedClassNames}>
       {apis.map((item, index) => {
         return (
 
-          <Link to ={ `../api's_charts/${item.title}`} key={index}>
+          <Link to ={ `../api's_charts/${item.title}`} key={index} onClick={()=>google_adw(item.title)}>
             <div
               className={style.item_apis}
             >

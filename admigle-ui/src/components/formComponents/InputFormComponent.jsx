@@ -4,6 +4,7 @@ import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PreloaderComponent from "../loaderComponents/PreloaderComponent";
+import { GoogleLogin } from "@react-oauth/google";
 
 export default function InputFormComponent() {
   const {
@@ -42,7 +43,9 @@ export default function InputFormComponent() {
 
   const [loader, setLoaderState] = useState(false);
 
-  const btn_click = (data) => {};
+  const google_log = () => {
+    window.location.href = "http://localhost:8000/google/";
+  };
 
   const handleFormSubmit = async (data, e) => {
     e.preventDefault();
@@ -123,14 +126,14 @@ export default function InputFormComponent() {
             </div>
 
             <div className={style.sing_btn}>
-              {/* <Link to=""> */}
+              <Link to=""> 
               <input type="submit" value="Sing In" />
-              {/*    */}
+              </Link>
             </div>
 
             <div className={style.diff_method_login}>
               <p>Or Sing In with</p>
-              <GoogleButton style={{ width: "340px" }} />
+              <GoogleButton style={{ width: "340px" }} onClick={google_log} />
             </div>
             <p className={style.create_account}>
               Don't have account?

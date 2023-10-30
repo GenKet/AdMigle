@@ -6,7 +6,7 @@ const apis = [
   },
   {
     imgURL: "https://v2.oviond.com/in/gadw.svg",
-    title: "Google Ads",
+    title: "Google Adw",
     sub_text: "Paid Search",
   },
   {
