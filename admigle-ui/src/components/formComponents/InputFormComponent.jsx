@@ -4,7 +4,6 @@ import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PreloaderComponent from "../loaderComponents/PreloaderComponent";
-import { GoogleLogin } from "@react-oauth/google";
 
 export default function InputFormComponent() {
   const {
@@ -44,21 +43,21 @@ export default function InputFormComponent() {
   const [loader, setLoaderState] = useState(false);
 
   const google_log = () => {
-    window.location.href = "http://localhost:8000/google/";
+    window.location.href = "http://localhost:8000/google/login/";
   };
 
   const handleFormSubmit = async (data, e) => {
     e.preventDefault();
     console.log(data);
     try {
-      const response = await fetch("http://localhost:5000/api/login/", {
+      const response = await fetch("http://localhost:8000/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-
+      
       if (response.status == 200) {
         setLoaderState(true);
         setTimeout(() => {
@@ -126,9 +125,9 @@ export default function InputFormComponent() {
             </div>
 
             <div className={style.sing_btn}>
-              <Link to=""> 
+             
               <input type="submit" value="Sing In" />
-              </Link>
+                  
             </div>
 
             <div className={style.diff_method_login}>
