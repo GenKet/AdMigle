@@ -18,30 +18,32 @@
   justify-content: space-between;
   padding-top: 20px;
 
+
+
   .list_project {
     width: 100%;
     table {
-    width: 92%;
+      width: 92%;
       margin-top: 30px;
-      padding:  0 100px 0 50px;
+      padding: 0 100px 0 50px;
       border-collapse: collapse;
       border-top-right-radius: 10px;
-      border-top-left-radius:10px;
+      border-top-left-radius: 10px;
       overflow: hidden;
-      thead{
+      thead {
         box-shadow: 5px 4px 40px rgba(39, 32, 120, 0.1);
-        th{
+        th {
           padding: 20px;
           text-align: start;
         }
       }
 
-      tbody{
-        tr{
-          td{
-            padding:  20px; 
+      tbody {
+        tr {
+          td {
+            padding: 20px;
             border-bottom: 1px solid black;
-            p{
+            p {
               margin: 0;
             }
           }
@@ -91,7 +93,7 @@
       h2,
       p {
         margin: 0;
-        white-space: nowrap;         
+        white-space: nowrap;
       }
       img {
         width: 35px;
@@ -107,7 +109,7 @@
 
     .item_apis:last-child {
       margin-right: 20px;
-      scale: 1.01;
+      
     }
     transition: all 1s;
   }
@@ -150,4 +152,43 @@
   position: relative;
   top: -50px;
   row-gap: 20px;
+}
+
+ .wrapper_animation_blocks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 5px 10px;
+  margin-top: 50px;
+  row-gap:30px;
+
+  .item_animation_block {
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 2s ;
+    cursor: pointer;
+    .text_block{
+
+      h3, p{
+        margin: 0;
+      }
+      
+      p{
+        color: #676767;
+      }
+    }
+
+  }
+
+  .item_animation_block:hover{
+    transform: translateY(-5px);
+  }
 }

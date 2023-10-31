@@ -15,7 +15,7 @@ _SCOPE = ["https://www.googleapis.com/auth/adwords"]
 _SERVER = "127.0.0.1"
 _PORT = 8000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/adwords/callback"
-flow = Flow.from_client_secrets_file(r"D:\Projects\AdMigle\ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
+flow = Flow.from_client_secrets_file(r"D:\Warehouse\Project\pet-projects\AdMigle\AdMigle\ads\client_secret_534721407121_nc1nsf5fp5c3e6hml6pkmt859nv0clb9_apps.json", scopes=_SCOPE)
 
 
 def index_view(request):
