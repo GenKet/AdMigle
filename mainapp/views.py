@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 
 import hashlib
 import os
+import json
 from google_auth_oauthlib.flow import Flow
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
@@ -24,25 +25,22 @@ def index_view(request):
 
 
 def login_view(request):
+    print(request.method)
     if request.method == "POST":
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-        print(request.POST)
-        print(email)
-        print(password)
-        if email and password:
-            try:
-                user = Users.objects.get(email=email, password=password)
-                # Если пользователь найден, возвращаем успешный HTTP-ответ
+        try:
+            data = json.loads(request.body)
+            print(data)
+            email = data.get("email")
+            password = data.get("password")
+            print(email)
+            print(password)
+            user = Users.objects.get(email=email, password=password)
+            if user:
                 return HttpResponse(status=200)
-            except Users.DoesNotExist:
-                # Если пользователя не существует, возвращаем ошибку HTTP-ответ
-                return HttpResponse(status=400)
-        else:
-            # Если email или пароль не были переданы, возвращаем ошибку HTTP-ответ
+            return HttpResponse(status=400)
+        except json.JSONDecodeError:
             return HttpResponse(status=400)
     else:
-        # Если запрос не является POST-запросом, возвращаем ошибку HTTP-ответ
         return HttpResponse(status=400)
 
 
