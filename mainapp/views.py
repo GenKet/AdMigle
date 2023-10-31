@@ -9,13 +9,13 @@ from google_auth_oauthlib.flow import Flow
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
-from mainapp.models import AdwData
+from mainapp.models import AdwData, Users
 
 _SCOPE = ["https://www.googleapis.com/auth/adwords"]
 _SERVER = "127.0.0.1"
 _PORT = 8000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/adwords/callback"
-flow = Flow.from_client_secrets_file(r"D:\Warehouse\Project\pet-projects\AdMigle\AdMigle\ads\client_secret_534721407121_nc1nsf5fp5c3e6hml6pkmt859nv0clb9_apps.json", scopes=_SCOPE)
+flow = Flow.from_client_secrets_file(r"D:\Projects\AdMigle\ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
 
 
 def index_view(request):
@@ -24,7 +24,27 @@ def index_view(request):
 
 
 def login_view(request):
-    return render(request, "index.html", {})
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        print(request.POST)
+        print(email)
+        print(password)
+        if email and password:
+            try:
+                user = Users.objects.get(email=email, password=password)
+                # Если пользователь найден, возвращаем успешный HTTP-ответ
+                return HttpResponse(status=200)
+            except Users.DoesNotExist:
+                # Если пользователя не существует, возвращаем ошибку HTTP-ответ
+                return HttpResponse(status=400)
+        else:
+            # Если email или пароль не были переданы, возвращаем ошибку HTTP-ответ
+            return HttpResponse(status=400)
+    else:
+        # Если запрос не является POST-запросом, возвращаем ошибку HTTP-ответ
+        return HttpResponse(status=400)
+
 
 
 def callback_views(request):
