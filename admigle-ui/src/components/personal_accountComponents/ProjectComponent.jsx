@@ -6,7 +6,7 @@ export default function ProjectComponent({ key_project }) {
   const project_info = get_project_info(key_project);
 
   const open_project = (e) => {
-    
+    window.location.href = '/personal_account'
   };
 
   const style = {
@@ -16,8 +16,9 @@ export default function ProjectComponent({ key_project }) {
     borderRadius: "20px",
     maxWidth: "fit-content",
   };
+  
   return (
-    <tr key={key_project} onClick={(e) => open_project(e)}>
+    <tr key={key_project} onClick={(e) => open_project(e)} style={{cursor:'pointer'}}>
       <td>
         <p> {project_info.name}</p>
       </td>

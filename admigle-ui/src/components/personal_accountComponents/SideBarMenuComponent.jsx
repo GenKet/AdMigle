@@ -18,11 +18,11 @@ export default function SideBarMenuComponent() {
         {menu_items && (
           <>
             <li>
-              <NavLink to="/personal_account">General</NavLink>
+              <NavLink to="/personal_account" style={{marginLeft:'10px', fontSize:'16px'}}>General</NavLink>
             </li>
 
             <li>
-              <NavLink to="api's_tab">API's</NavLink>
+              <NavLink to="api's_tab"style={{marginLeft:'10px', fontSize:'16px'}}>API's</NavLink>
             </li>
           </>
         )}
