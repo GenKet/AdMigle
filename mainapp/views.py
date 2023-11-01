@@ -85,4 +85,4 @@ def adwords_callback(request):
     print(customer_id)
     print(refresh_token)
     awd_data = AdwData.objects.create(refresh_token=refresh_token,customer_id=customer_id, user_id=1)
-    return HttpResponse(request)
+    return redirect(r"http://localhost:3000/personal_account/api's_tab/?google=200")
