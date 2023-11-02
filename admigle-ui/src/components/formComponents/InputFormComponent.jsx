@@ -43,7 +43,7 @@ export default function InputFormComponent() {
   const [loader, setLoaderState] = useState(false);
 
   const google_log = () => {
-    window.location.href = "http://localhost:8000/google/login/";
+    window.location.href = "http://localhost:8000/accounts/google/login/";
   };
 
   const handleFormSubmit = async (data, e) => {
