@@ -135,7 +135,7 @@ export default function InputFormComponent() {
               <GoogleButton style={{ width: "340px" }} onClick={google_log} />
             </div>
             <p className={style.create_account}>
-              Don't have account?
+              Don't have account?    
               <span>
                 <Link to="/regform ">Create Account</Link>
               </span>

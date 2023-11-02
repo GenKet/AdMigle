@@ -23,16 +23,15 @@ function MainComponent() {
           element={<MainPersonalAccountComponent />}
         >
 
-            <Route index element={<MainChartsComponent />} />
+            <Route path="main_chart" element={<MainChartsComponent />} />
 
             <Route path="api's_tab" element={<APisMainComponent />} />
-
 
             <Route path="api's_charts/:key" element={<ChartApisComponent />} />
 
             <Route path="user_projects/:key" element = {<ProjectsComponent/>}></Route>
             
-            <Route path="user's" element = {<UsersMainComponent/>}></Route>
+            <Route index /*path="user's"*/ element = {<UsersMainComponent/>}></Route>
 
         </Route>
        
