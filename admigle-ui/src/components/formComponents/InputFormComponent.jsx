@@ -43,7 +43,7 @@ export default function InputFormComponent() {
   const [loader, setLoaderState] = useState(false);
 
   const google_log = () => {
-    window.location.href = "http://localhost:8000/google/login/";
+    window.location.href = "http://localhost:8000/accounts/google/login/";
   };
 
   const handleFormSubmit = async (data, e) => {
@@ -135,7 +135,7 @@ export default function InputFormComponent() {
               <GoogleButton style={{ width: "340px" }} onClick={google_log} />
             </div>
             <p className={style.create_account}>
-              Don't have account?
+              Don't have account?    
               <span>
                 <Link to="/regform ">Create Account</Link>
               </span>

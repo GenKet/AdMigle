@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function UserComponent({ data }) {
   return (
-    <Link to={`../user_projects/${data._key}`}>
+    <Link to={`user_projects/${data._key}`}>
       <div className={styles.wrapper_user_icon} name={data._key}>
         <div
           className={styles.img}
