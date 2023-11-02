@@ -9,14 +9,15 @@ import json
 from google_auth_oauthlib.flow import Flow
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
+from django.contrib.auth.hashers import make_password, check_password
 
 from mainapp.models import AdwData, Users
 
-_SCOPE = ["https://www.googleapis.com/auth/adwords"]
+_SCOPE = ["https://www.googleapis.com/auth/adwords","https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile","openid"]
 _SERVER = "127.0.0.1"
 _PORT = 8000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/adwords/callback"
-flow = Flow.from_client_secrets_file(r"D:\Warehouse\Project\pet-projects\AdMigle\AdMigle\ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
+flow = Flow.from_client_secrets_file(r"D:\Projects\AdMigle\ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
 
 
 def index_view(request):
@@ -32,9 +33,11 @@ def login_view(request):
             print(data)
             email = data.get("email")
             password = data.get("password")
+            hashed_pwd = make_password(password)
+            print(hashed_pwd)
             print(email)
             print(password)
-            user = Users.objects.get(email=email, password=password)
+            user = Users.objects.get(email=email, password=hashed_pwd)
             if user:
                 return HttpResponse(status=200)
             return HttpResponse(status=400)
@@ -84,5 +87,5 @@ def adwords_callback(request):
     customer_id = str(resource_names[0]).split("/")[1]
     print(customer_id)
     print(refresh_token)
-    awd_data = AdwData.objects.create(refresh_token=refresh_token,customer_id=customer_id, user_id=1)
-    return redirect(r"http://localhost:3000/personal_account/api's_tab/?google=200")
+    awd_data = AdwData.objects.create(refresh_token=refresh_token,customer_id=customer_id, user_id=request.user)
+    return redirect(r"http://localhost:3000/personal_account/api's_tab?Google%20Adw=200")

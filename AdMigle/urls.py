@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index_view),
     path("login/", login_view, name='login_view'),
-    path("", include("allauth.urls")),
+    path("accounts/", include("allauth.urls")),
     path('/google/login/callback/', callback_views, name='signup_redirect'),
     path("",include("mainapp.urls"))
+
 ]
