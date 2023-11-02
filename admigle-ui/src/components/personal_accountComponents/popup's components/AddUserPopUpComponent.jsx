@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { useForm, Controller } from "react-hook-form";
 import generateRandomKey from "../../../test_immitation/test_methods.js";
 import { create_user } from "../../../test_immitation/Entity_user";
+import { add_user_db } from "../../../test_immitation/test_database_users";
 
 export default function AddUserPopUpComponent({ visib, state_fun }) {
   const {
@@ -15,7 +16,14 @@ export default function AddUserPopUpComponent({ visib, state_fun }) {
 
   const onSubmit = async (data, e) => {
     const key = generateRandomKey(32);
-    // add_user_db(create_user(data.client_name, data.client_currency, key, data.client_website));
+    add_user_db(
+      create_user(
+        data.client_name,
+        data.client_currency,
+        key,
+        data.client_website
+      )
+    );
 
     e.preventDefault();
     console.log(data);
@@ -26,7 +34,7 @@ export default function AddUserPopUpComponent({ visib, state_fun }) {
         key,
         data.client_website
       );
-      const response = await fetch("http://localhost:5000/api/login/", {
+      const response = await fetch("http://localhost:8000/add_project", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +44,14 @@ export default function AddUserPopUpComponent({ visib, state_fun }) {
       });
 
       if (response.status == 200) {
-        console.log("good");
+        add_user_db(
+          create_user(
+            data.client_name,
+            data.client_currency,
+            key,
+            data.client_website
+          )
+        );
       } else {
         console.error("Ошибка сервера:", response.status, response.statusText);
       }

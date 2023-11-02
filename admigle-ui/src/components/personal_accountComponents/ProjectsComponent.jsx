@@ -24,6 +24,7 @@ export default function ProjectsComponent() {
 };
 
   const projects = get_user_projects(param.key);
+  console.log(projects)
 
   return (
     <>

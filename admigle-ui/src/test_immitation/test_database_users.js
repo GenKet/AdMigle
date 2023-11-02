@@ -32,6 +32,7 @@ const add_user_db = (user) =>{
 }
 
 const add_project_db = (project_key, project, user_key )=>{
+    console.log(project_key, project, user_key)
     Projects_DB[project_key] = project ;
     add_usersproject_db(user_key, project_key);
 }

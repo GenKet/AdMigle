@@ -1,17 +1,13 @@
-'use strict';
 
-import {configureStore} from  '@reduxjs/toolkit';
-import  languageState  from './langredux_logic.js';
-import Drop_List_State from './drop_list_logic.js'
-
-
+import { configureStore } from '@reduxjs/toolkit';
+import languageState from './langredux_logic.js';
+import dropListState from './drop_list_logic.js';
+import connectionList from "./connection_api's.js";
 
 export default configureStore({
-    reducer:{
-        language:languageState,
-        drop_list:Drop_List_State,
+    reducer: {
+        language: languageState,
+        drop_list: dropListState,
+        connection_list: connectionList, 
     },
 });
-
-
-
