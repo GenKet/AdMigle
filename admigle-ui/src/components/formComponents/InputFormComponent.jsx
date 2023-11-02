@@ -48,6 +48,7 @@ export default function InputFormComponent() {
 
   const handleFormSubmit = async (data, e) => {
     e.preventDefault();
+    console.log(data);
     try {
       const response = await fetch("http://localhost:8000/login/", {
         method: "POST",
