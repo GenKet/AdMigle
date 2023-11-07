@@ -48,6 +48,22 @@ def login_view(request):
         return HttpResponse(status=400)
 
 
+def registretion_view(request):
+    print(request.method)
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            email = data.get("email")
+            password = data.get("password")
+            hashed_pwd = make_password(password)
+            user = Users.objects.create_user(email=email, password=hashed_pwd)
+            if user:
+                return HttpResponse(status=200)
+        except:
+            return HttpResponse(status=400)
+    else:
+        return HttpResponse(status=400)
+
 
 def callback_views(request):
     print(request)

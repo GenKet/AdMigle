@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from mainapp.views import index_view, login_view, callback_views
+from mainapp.views import index_view, login_view, callback_views, registretion_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path("login/", login_view, name='login_view'),
     path("accounts/", include("allauth.urls")),
     path('/google/login/callback/', callback_views, name='signup_redirect'),
-    path("",include("mainapp.urls"))
+    path("",include("mainapp.urls")),
+    path("registration/", registretion_view, name="registration")
 
 ]
