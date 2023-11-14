@@ -13,7 +13,7 @@ from google.ads.googleads.errors import GoogleAdsException
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password, check_password
 
-from mainapp.models import AdwData, Users
+from mainapp.models import AdwData, Users, Client, Projects
 
 _SCOPE = ["https://www.googleapis.com/auth/adwords","https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile","openid"]
 _SERVER = "127.0.0.1"
@@ -37,8 +37,7 @@ class LoginView(View):
         try:
             user = Users.objects.get(email=email)
             if user:
-                print("l")
-                login(request, user)
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect("create_user")
             else:
                 return redirect("Login")
@@ -50,7 +49,13 @@ class LoginView(View):
 
 class Create_user(View):
     def get (self, request):
-        return render(request, "create_user.html", {})
+        users = Client.objects.filter(user_id=request.user)
+        return render(request, "create_user.html", {"Users": users})
+    def post(self, request):
+        name = request.POST["name"]
+        description = request.POST["description"]
+        Client.objects.create(name=name, description=description, user_id=request.user)
+        return redirect(request, "create_user.html", {})
 
 
 
@@ -114,3 +119,15 @@ def adwords_callback(request):
     print(refresh_token)
     awd_data = AdwData.objects.create(refresh_token=refresh_token,customer_id=customer_id, user_id=request.user)
     return redirect(r"http://localhost:3000/personal_account/api's_tab?Google%20Adw=200")
+
+
+class ClientView(View):
+    def get(self, request, client_id):
+        projects = Projects.objects.filter(client_id=client_id)
+        return render(request, "create_user.html", {"Projects": projects})
+
+    def post(self, request):
+        name = request.POST["name"]
+        description = request.POST["description"]
+        Client.objects.create(name=name, description=description, user_id=request.user)
+        return redirect(request, "create_user.html", {})
