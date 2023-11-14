@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
+from django.views import View
 
 import hashlib
 import os
@@ -9,6 +10,7 @@ import json
 from google_auth_oauthlib.flow import Flow
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password, check_password
 
 from mainapp.models import AdwData, Users
@@ -26,43 +28,49 @@ def index_view(request):
     return render(request, "index1.html", {})
 
 
-def login_view(request):
-    print(request.method)
-    if request.method == "POST":
+class LoginView(View):
+    def get(self, request):
+        return render(request, "Sing_in.html", {})
+    def post(self, request):
+        email = request.POST["email"]
+        password = request.POST["password"]
         try:
-            data = json.loads(request.body)
-            print(data)
-            email = data.get("email")
-            password = data.get("password")
-            hashed_pwd = make_password(password)
-            print(hashed_pwd)
-            print(email)
-            print(password)
-            user = Users.objects.get(email=email, password=hashed_pwd)
+            user = Users.objects.get(email=email)
             if user:
-                return HttpResponse(status=200)
-            return HttpResponse(status=400)
-        except json.JSONDecodeError:
-            return HttpResponse(status=400)
-    else:
-        return HttpResponse(status=400)
-
-
-def registretion_view(request):
-    print(request.method)
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-            email = data.get("email")
-            password = data.get("password")
-            hashed_pwd = make_password(password)
-            user = Users.objects.create_user(email=email, password=hashed_pwd)
-            if user:
-                return HttpResponse(status=200)
+                print("l")
+                login(request, user)
+                return redirect("create_user")
+            else:
+                return redirect("Login")
         except:
-            return HttpResponse(status=400)
-    else:
-        return HttpResponse(status=400)
+            return redirect("Login")
+
+
+
+
+class Create_user(View):
+    def get (self, request):
+        return render(request, "create_user.html", {})
+
+
+
+
+class RegistretionView(View):
+    def get(self, request):
+        users = Users.objects.all()
+        return render(request, "Sign_up.html", {})
+
+    def post(self, request):
+        print("post")
+        email = str(request.POST["email"])
+        password = str(request.POST["password"])
+        username = str(email.split("@")[0])
+        user = Users.objects.create_user(username=username, email=email, password=password)
+        if user:
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+
+            return redirect("create_user")
+        return
 
 
 def callback_views(request):

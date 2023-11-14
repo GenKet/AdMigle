@@ -72,7 +72,9 @@ USE_X_FORWARDED_HOST = True
 HOST = os.environ.get("HOST", default="http://localhost:8000/")
 
 AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
 
 SOCIALACCOUNT_PROVIDERS = {

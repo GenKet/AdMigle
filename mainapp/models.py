@@ -3,11 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 class Users(AbstractUser):
     username = models.CharField(max_length=200,null=True)
-    password = models.CharField(max_length=200,null=True)
-    status = models.IntegerField(null=True)
+    email = models.EmailField()
 
     def __str__(self):
-        return self.username, self.password, self.status
+        return f"{self.email} {self.password} {self.username}"
 
 
 class AdwData(models.Model):
