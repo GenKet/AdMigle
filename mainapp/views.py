@@ -122,12 +122,13 @@ def adwords_callback(request):
 
 
 class ClientView(View):
-    def get(self, request, client_id):
+    def get(self, request):
+        client_id = request.GET["id"]
         projects = Projects.objects.filter(client_id=client_id)
-        return render(request, "create_user.html", {"Projects": projects})
+        return render(request, "projects.html", {"Projects": projects})
 
     def post(self, request):
         name = request.POST["name"]
         description = request.POST["description"]
         Client.objects.create(name=name, description=description, user_id=request.user)
-        return redirect(request, "create_user.html", {})
+        return redirect("projects.html", {})

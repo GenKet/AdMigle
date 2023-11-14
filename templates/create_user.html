@@ -879,10 +879,6 @@
                 <ul class="MainPersonalAccount_styles_list_menu__6rRs2">
                     <li><a aria-current="page" class="active" href="http://localhost:3000/personal_account">User</a>
                     </li>
-                    <li><a class="" href="http://localhost:3000/personal_account/main_chart&#39;s"
-                           style="margin-left: 10px; font-size: 16px;">General</a></li>
-                    <li><a class="" href="http://localhost:3000/personal_account/api&#39;s_tab"
-                           style="margin-left: 10px; font-size: 16px;">API's</a></li>
                 </ul>
             </div>
         </div>
@@ -892,7 +888,7 @@
             </div>
             <div class="MainChartComponent_style_wrapper_users__FNmEq">
                 {% for user in Users %}
-                    <a href="http://localhost:8000/client/{{ user.id }}">
+                    <a href="http://localhost:8000/client?id={{ user.id }}">
                 <div class="MainPersonalAccount_styles_wrapper_user_icon__Kif8O"
                      name="20e52730-4432-41ed-ad7a-2b53af9b">
                     <div class="MainPersonalAccount_styles_img__4cKsV"

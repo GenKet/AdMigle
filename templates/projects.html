@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)http://localhost:3000/personal_account/api's_tab?Google%20Adw=200 -->
+<!-- saved from url=(0085)http://localhost:3000/personal_account/user_projects/20e52730-4432-41ed-ad7a-2b53af9b -->
 <html lang="en">
 <div id="ext_installed_id"></div>
 <head>
@@ -51,7 +51,6 @@
                 document.removeEventListener("mousemove", resize);
             }
         });
-    </script>
     </script>
     <style>body {
         margin: 0;
@@ -1317,43 +1316,61 @@
                     </li>
                     <li><a class="" href="http://localhost:3000/personal_account/main_chart&#39;s"
                            style="margin-left: 10px; font-size: 16px;">General</a></li>
-                    <li><a aria-current="page" class="active"
-                           href="http://localhost:3000/personal_account/api&#39;s_tab"
+                    <li><a class="" href="http://localhost:3000/personal_account/api&#39;s_tab"
                            style="margin-left: 10px; font-size: 16px;">API's</a></li>
                 </ul>
             </div>
         </div>
-        <div class="MainChartComponent_style_wrapper_charts__tVtDO MainPersonalAccount_styles_wrapper_component__rfwtk">
-            <a href="http://localhost:3000/personal_account/api&#39;s_charts/Facebook">
-                <div class="MainChartComponent_style_item_apis__V+HPb">
-                    <div class="MainChartComponent_style_connection__8+hrb"><i>✓</i></div>
-                    <img src="./AdMigle_files/fb-pg.svg">
-                    <div><h2>Facebook</h2>
-                        <p>Social Media</p></div>
+        <div class="MainChartComponent_style_wrapper_charts__tVtDO">
+            <div class="MainChartComponent_style_top_header_part__8Brl9">
+                <div class="MainChartComponent_style_user__CkvXh">Antonio project's</div>
+                <div class="MainChartComponent_style_add_project_btn__G4bYp">
+                    <button type="button">Add Project+</button>
                 </div>
-            </a><a href="http://localhost:8000/adwords/">
-            <div class="MainChartComponent_style_item_apis__V+HPb">
-                <div class="MainChartComponent_style_connection__8+hrb MainChartComponent_style_visib__0jTyX"><i>✓</i>
+            </div>
+            <div class="MainChartComponent_style_list_project__W2pPP">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 30%;">Project Name</th>
+                        <th style="width: 30%;">Description</th>
+                        <th style="width: 25%; cursor: pointer;">Date Created</th>
+                        <th style="width: 15%;">Type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                     {% for project in Projects %}
+                    <tr style="cursor: pointer;">
+                        <td><p> {{ project.name }}</p></td>
+                        <td><p>{{ project.descriptions_client }}</p></td>
+                        <td><p>вторник, 14.11.23 г.</p></td>
+                        <td>
+                            <p style="background-color: rgba(0, 255, 30, 0.1); color: rgba(0, 0, 0, 0.8); padding: 10px 20px; border-radius: 20px; max-width: fit-content;">
+                                {{ project.project_type }}</p></td>
+                    </tr>
+                    {% endfor  %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="AddUserPopUp_style_wrapper_popup__hnQ90">
+            <div class="AddUserPopUp_style_close_cross__0IDRt">✖</div>
+            <form class="AddUserPopUp_style_form_create_user__2cS9l"><h3>Project details</h3>
+                <div class="AddUserPopUp_style__line__N0Iuo">
+                    <div class="AddUserPopUp_style_wrapper_input__sRbd5"><label for="Project_name">Project
+                        Name</label><input name="client_name" id="client_name" value=""></div>
+                    <div class="AddUserPopUp_style_wrapper_input__sRbd5"><label for="client_website">Description</label><input
+                            name="client_website" id="client_website" value=""></div>
                 </div>
-                <img src="./AdMigle_files/gadw.svg">
-                <div><h2>Google Adw</h2>
-                    <p>Paid Search</p></div>
-            </div>
-        </a><a href="http://localhost:3000/personal_account/api&#39;s_charts/Instagram">
-            <div class="MainChartComponent_style_item_apis__V+HPb">
-                <div class="MainChartComponent_style_connection__8+hrb"><i>✓</i></div>
-                <img src="./AdMigle_files/inst.svg">
-                <div><h2>Instagram</h2>
-                    <p>Social Media</p></div>
-            </div>
-        </a><a href="http://localhost:3000/personal_account/api&#39;s_charts/Google%20Sheets">
-            <div class="MainChartComponent_style_item_apis__V+HPb">
-                <div class="MainChartComponent_style_connection__8+hrb"><i>✓</i></div>
-                <img src="./AdMigle_files/gs.svg">
-                <div><h2>Google Sheets</h2>
-                    <p>Spreadsheet</p></div>
-            </div>
-        </a></div>
+                <div class="AddUserPopUp_style__line__N0Iuo">
+                    <div class="AddUserPopUp_style_wrapper_input__sRbd5"><label for="client_currency">Type
+                        Project</label><select name="client_currency" id="client_currency">
+                        <option value="FaceBook">FaceBook</option>
+                    </select></div>
+                </div>
+                <button type="submit">Create Project</button>
+            </form>
+        </div>
     </div>
 </div>
 

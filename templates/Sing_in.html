@@ -1,3 +1,5 @@
+{% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <!-- saved from url=(0022)http://localhost:3000/ -->
 <html lang="en">
@@ -861,7 +863,7 @@
             <div class="inputForm_forgot_pass_block__WlJkV"><p>Forgot your password?</p></div>
             <div class="inputForm_sing_btn__d4Tv6"><input type="submit" value="Sing In"></div>
             <div class="inputForm_diff_method_login__WI+5w"><p>Or Sing In with</p>
-                <div type="dark" tabindex="0" role="button"
+                <a type="dark" tabindex="0" role="button" href="{% provider_login_url 'google'%}?next=/"
                      style="background-color: rgb(66, 133, 244); color: rgb(255, 255, 255); height: 50px; width: 340px; border: none; text-align: center; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 4px 0px; font-size: 16px; line-height: 48px; display: block; border-radius: 1px; transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s, box-shadow 0.218s ease 0s; font-family: Roboto, arial, sans-serif; cursor: pointer; user-select: none;">
                     <div style="width: 48px; height: 48px; text-align: center; display: block; margin-top: 1px; margin-left: 1px; float: left; background-color: rgb(255, 255, 255); border-radius: 1px; white-space: nowrap;">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="46px" height="46px"
@@ -923,7 +925,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span>Sign in with Google</span></div>
+                    <span>Sign in with Google</span></a>
             </div>
             <p class="inputForm_create_account__Jscb+">Don't have account?<span><a href="http://localhost:8000/registration">Create Account</a></span>
             </p></form>
