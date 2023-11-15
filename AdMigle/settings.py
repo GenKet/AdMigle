@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
     'corsheaders',
+    'chartjs',
 ]
 
 SOCIALACCOUNT_LOGIN_ON_GET = True

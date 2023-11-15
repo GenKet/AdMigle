@@ -1,12 +1,15 @@
 import hashlib
 import os
 
+from chartjs.views.lines import BaseLineChartView
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView
 from google.ads.googleads.client import GoogleAdsClient
 from google_auth_oauthlib.flow import Flow
+from random import randint
 
 from mainapp.models import AdwData, Users, Client, Projects
 
@@ -136,3 +139,13 @@ class ApisViews(View):
 class FacebookLoginViews(View):
     def get(self, request):
         return render(request, "apis.html")
+
+
+class GoogleCharts(BaseLineChartView):
+    def  get_labels(self):
+      return ["clicks"]
+
+    def get_data(self):
+        return [[75, 44, 92, 11, 44, 95, 35],
+                [41, 92, 18, 3, 73, 87, 92],
+                [87, 21, 94, 3, 90, 13, 65]]
