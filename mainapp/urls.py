@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from mainapp.views import adwords, adwords_callback, RegistretionView, Create_user, LoginView, callback_views, ClientView
+from mainapp.views import *
 
 
 urlpatterns = [
@@ -14,4 +14,6 @@ urlpatterns = [
     path("adwords/callback", adwords_callback),
 
     path('/google/login/callback/', callback_views, name='signup_redirect'),
+    path('apis/', ApisViews.as_view()),
+    path('facebook_login/', ApisViews.as_view())
 ]

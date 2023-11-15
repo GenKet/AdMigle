@@ -1,26 +1,22 @@
-from django.shortcuts import render
-from django.urls import reverse
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import redirect
-from django.views import View
-
 import hashlib
 import os
-import json
-from google_auth_oauthlib.flow import Flow
+
+from django.contrib.auth import login
+from django.shortcuts import redirect
+from django.shortcuts import render
+from django.views import View
 from google.ads.googleads.client import GoogleAdsClient
-from google.ads.googleads.errors import GoogleAdsException
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password, check_password
+from google_auth_oauthlib.flow import Flow
 
 from mainapp.models import AdwData, Users, Client, Projects
 
-_SCOPE = ["https://www.googleapis.com/auth/adwords","https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile","openid"]
+_SCOPE = ["https://www.googleapis.com/auth/adwords", "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/userinfo.profile", "openid"]
 _SERVER = "127.0.0.1"
 _PORT = 8000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/adwords/callback"
-flow = Flow.from_client_secrets_file(r"D:\Projects\AdMigle\ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
-
+flow = Flow.from_client_secrets_file(
+    r"ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
 
 
 def index_view(request):
@@ -31,6 +27,7 @@ def index_view(request):
 class LoginView(View):
     def get(self, request):
         return render(request, "Sing_in.html", {})
+
     def post(self, request):
         email = request.POST["email"]
         password = request.POST["password"]
@@ -45,19 +42,16 @@ class LoginView(View):
             return redirect("Login")
 
 
-
-
 class Create_user(View):
-    def get (self, request):
+    def get(self, request):
         users = Client.objects.filter(user_id=request.user)
         return render(request, "create_user.html", {"Users": users})
+
     def post(self, request):
         name = request.POST["name"]
         description = request.POST["description"]
         Client.objects.create(name=name, description=description, user_id=request.user)
         return redirect(request, "create_user.html", {})
-
-
 
 
 class RegistretionView(View):
@@ -117,7 +111,7 @@ def adwords_callback(request):
     customer_id = str(resource_names[0]).split("/")[1]
     print(customer_id)
     print(refresh_token)
-    awd_data = AdwData.objects.create(refresh_token=refresh_token,customer_id=customer_id, user_id=request.user)
+    awd_data = AdwData.objects.create(refresh_token=refresh_token, customer_id=customer_id, user_id=request.user)
     return redirect(r"http://localhost:3000/personal_account/api's_tab?Google%20Adw=200")
 
 
@@ -132,3 +126,13 @@ class ClientView(View):
         description = request.POST["description"]
         Client.objects.create(name=name, description=description, user_id=request.user)
         return redirect("projects.html", {})
+
+
+class ApisViews(View):
+    def get(self, request):
+        return render(request, "apis.html")
+
+
+class FacebookLoginViews(View):
+    def get(self, request):
+        return render(request, "apis.html")

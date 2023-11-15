@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <!DOCTYPE html>
 <!-- saved from url=(0065)http://localhost:3000/personal_account/api's_tab?Google%20Adw=200 -->
 <html lang="en">
@@ -1323,8 +1324,9 @@
                 </ul>
             </div>
         </div>
+
         <div class="MainChartComponent_style_wrapper_charts__tVtDO MainPersonalAccount_styles_wrapper_component__rfwtk">
-            <a href="http://localhost:3000/personal_account/api&#39;s_charts/Facebook">
+            <a href="{% provider_login_url 'facebook'%}">
                 <div class="MainChartComponent_style_item_apis__V+HPb">
                     <div class="MainChartComponent_style_connection__8+hrb"><i>✓</i></div>
                     <img src="./AdMigle_files/fb-pg.svg">
