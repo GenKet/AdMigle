@@ -3,6 +3,8 @@ import os
 
 from chartjs.views.lines import BaseLineChartView
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
@@ -18,11 +20,6 @@ _PORT = 8000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/adwords/callback"
 flow = Flow.from_client_secrets_file(
     r"ads\client_secret_534721407121-nc1nsf5fp5c3e6hml6pkmt859nv0clb9.apps.googleusercontent.com.json", scopes=_SCOPE)
-
-
-def index_view(request):
-    print(request.user.id)
-    return render(request, "index1.html", {})
 
 
 class LoginView(View):
@@ -43,9 +40,10 @@ class LoginView(View):
             return redirect("Login")
 
 
-class Create_user(View):
+class Create_user(View, LoginRequiredMixin):
     def get(self, request):
-        users = Client.objects.filter(user_id=request.user)
+        print(request.user)
+        users = Client.objects.filter(user=request.user)
         return render(request, "create_user.html", {"Users": users})
 
     def post(self, request):
@@ -55,7 +53,7 @@ class Create_user(View):
         return redirect(request, "create_user.html", {})
 
 
-class RegistretionView(View):
+class RegistrationView(View):
     def get(self, request):
         users = Users.objects.all()
         return render(request, "Sign_up.html", {})
@@ -68,14 +66,8 @@ class RegistretionView(View):
         user = Users.objects.create_user(username=username, email=email, password=password)
         if user:
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
-
             return redirect("create_user")
         return
-
-
-def callback_views(request):
-    print(request)
-    return render(request, "index.html", {})
 
 
 def adwords(request):
@@ -91,6 +83,7 @@ def adwords(request):
     return redirect(authorization_url)
 
 
+@login_required
 def adwords_callback(request):
     code = request.GET["code"]
     flow.fetch_token(code=code)
@@ -112,11 +105,13 @@ def adwords_callback(request):
     customer_id = str(resource_names[0]).split("/")[1]
     print(customer_id)
     print(refresh_token)
-    awd_data = AdwData.objects.create(refresh_token=refresh_token, customer_id=customer_id, user_id=request.user)
-    return redirect(r"http://localhost:3000/personal_account/api's_tab?Google%20Adw=200")
+    awd_data = AdwData.objects.create(refresh_token=refresh_token, customer_id=customer_id,
+                                      user_id=request.session['client_id'])
+    awd_data.save()
+    return redirect(r"create_user")
 
 
-class ClientView(View):
+class ClientView(View, LoginRequiredMixin):
     def get(self, request):
         client_id = request.GET["id"]
         projects = Projects.objects.filter(client_id=client_id)
@@ -131,6 +126,7 @@ class ClientView(View):
 
 class ApisViews(View):
     def get(self, request):
+        request.session['client_id'] = request.GET['client_id']
         return render(request, "apis.html")
 
 
@@ -152,4 +148,8 @@ class GoogleCharts(BaseLineChartView):
 class ChartsView(View):
     def get(self, request):
         project_id = request.GET['id']
+        project = Projects.objects.get(id=project_id)
+        if project.project_type == "Google adw":
+            adw_data = AdwData.objects.get(client_id=project.client.id)
+            return render(request, "charts.html", {"data": adw_data})
         return render(request, "charts.html")

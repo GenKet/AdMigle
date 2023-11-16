@@ -69,6 +69,7 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_REDIRECT_URL = "/google/login/callback/"
 ACCOUNT_LOGOUT_REDIRECT = "/"
 
+
 USE_X_FORWARDED_HOST = True
 
 HOST = os.environ.get("HOST", default="http://localhost:8000/")
