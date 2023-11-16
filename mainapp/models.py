@@ -1,8 +1,9 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 
 class Users(AbstractUser):
-    username = models.CharField(max_length=200,null=True)
+    username = models.CharField(max_length=200, null=True)
     email = models.EmailField()
 
     def __str__(self):
@@ -10,15 +11,15 @@ class Users(AbstractUser):
 
 
 class AdwData(models.Model):
-    refresh_token = models.CharField(max_length=200,null=True)
-    customer_id = models.CharField(max_length=200,null=True)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE,null=True)
+    refresh_token = models.CharField(max_length=200, null=True)
+    customer_id = models.CharField(max_length=200, null=True)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True)
 
 
 class Client(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200,null=True)
-    descriptions_client = models.CharField(max_length=200,null=True)
+    name = models.CharField(max_length=200, null=True)
+    descriptions_client = models.CharField(max_length=200, null=True)
 
 
 class Projects(models.Model):

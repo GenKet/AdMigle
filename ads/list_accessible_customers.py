@@ -20,7 +20,6 @@ the login-customer-id configuration. For more information see this
 documentation: https://developers.google.com/google-ads/api/docs/concepts/call-structure#cid
 """
 
-
 import sys
 
 from google.ads.googleads.client import GoogleAdsClient
@@ -44,7 +43,7 @@ def main(client):
 if __name__ == "__main__":
     # GoogleAdsClient will read the google-ads.yaml configuration file in the
     # home directory if none is specified.
-    googleads_client = GoogleAdsClient.load_from_storage(path="googleads.yaml" ,version="v15")
+    googleads_client = GoogleAdsClient.load_from_storage(path="googleads.yaml", version="v15")
 
     try:
         main(googleads_client)

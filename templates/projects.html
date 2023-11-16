@@ -1296,7 +1296,7 @@
             </div>
             <div class="MainHeader_styles_account__RLeZj">
                 <div class="MainHeader_styles_image_account__5WHmW" id="img_profile">35x35</div>
-                <div class="MainHeader_styles_account_name__SA-JS">Antonio DeBanano</div>
+                <div class="MainHeader_styles_account_name__SA-JS">{{ request.user.username }}</div>
                 <div class="MainHeader_styles_wrapper_account_edit__7AQGx">
                     <ul>
                         <li><a href="http://localhost:3000/personal_account/settings"> Settings</a></li>
@@ -1339,16 +1339,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                     {% for project in Projects %}
-                    <tr style="cursor: pointer;">
-                        <td><p> {{ project.name }}</p></td>
-                        <td><p>{{ project.descriptions_client }}</p></td>
-                        <td><p>вторник, 14.11.23 г.</p></td>
-                        <td>
-                            <p style="background-color: rgba(0, 255, 30, 0.1); color: rgba(0, 0, 0, 0.8); padding: 10px 20px; border-radius: 20px; max-width: fit-content;">
-                                {{ project.project_type }}</p></td>
-                    </tr>
-                    {% endfor  %}
+                    {% for project in Projects %}
+                        <tr style="cursor: pointer;">
+                            <td><a href="http://localhost:8000/project?id={{ project.id }}"> {{ project.name }}</a></td>
+                            <td><p>{{ project.descriptions_client }}</p></td>
+                            <td><p>вторник, 14.11.23 г.</p></td>
+                            <td>
+                                <p style="background-color: rgba(0, 255, 30, 0.1); color: rgba(0, 0, 0, 0.8); padding: 10px 20px; border-radius: 20px; max-width: fit-content;">
+                                    {{ project.project_type }}</p></td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
